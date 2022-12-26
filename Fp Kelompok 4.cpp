@@ -33,23 +33,12 @@ void inputdata()
 		cout << " No. HP \t\t: "; 
 		getline (cin >> ws, nasabah[jum].no_hp);
 		cout << " No. Rekening \t\t: "; 
-		cin >> nasabah[jum].no_rek;
+		getline (cin >> ws, nasabah[jum].no_rek);
 		cout << " ---------------------------------------------------- " << endl;
+		cout << "\n Data Berhasil Terinput ! " << endl;
 		
 		cout << endl;
-		cout << "=========================================================================================================================================" << endl;
-		cout << "|                Nama                |                Alamat                |          No. HP          |          No. Rekening          | " << endl;
-		cout << "=========================================================================================================================================" << endl;
-		for(int j = 0; j <= jum; j++)
-		{
-			cout << "| " << setiosflags(ios::left) << setw(35) << nasabah[j].nama << "|"; 
-			cout << " " << setiosflags(ios::left) << setw(37) << nasabah[j].alamat << "|"; 
-			cout << " " << setiosflags(ios::left) << setw(25) << nasabah[j].no_hp << "|"; 
-			cout << " " << setiosflags(ios::left) << setw(31) << nasabah[j].no_rek << "|"<< endl;
-		}
-		
-		cout << endl;
-		cout << " Apakah Anda Ingin Menambahkan Data (Y/N) ?  ";
+		cout << " Apakah Anda Ingin Menambahkan Data Lagi (Y/N) ?  ";
 		cin >> loop;
 		cout << endl;
 		jum++;	
