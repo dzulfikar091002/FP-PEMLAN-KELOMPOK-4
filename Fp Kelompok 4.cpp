@@ -160,6 +160,85 @@ void SelectionSortDesc(){
     }
 }
 
+string temp2,temp3,temp4;
+long long int temp1,kunci;
+
+void InsertionSortDesc()
+{
+    for (int i=1; i<jum; i++)
+            {
+                for (int j=i; j>0; j--)
+                {
+                    if (nasabah[j].no_rek>nasabah[j-1].no_rek)
+                    {
+                        temp1=nasabah[j].no_rek;
+                        nasabah[j].no_rek=nasabah[j-1].no_rek;
+                        nasabah[j-1].no_rek=temp1;
+
+                        temp2=nasabah[j].nama;
+                        nasabah[j].nama=nasabah[j-1].nama;
+                        nasabah[j-1].nama=temp2;
+
+                        temp3=nasabah[j].no_hp;
+                        nasabah[j].no_hp=nasabah[j-1].no_hp;
+                        nasabah[j-1].no_hp=temp3;
+
+                        temp4=nasabah[j].alamat;
+                        nasabah[j].alamat=nasabah[j-1].alamat;
+                        nasabah[j-1].alamat=temp4;
+                    }else
+                    {
+                        break;
+                    }
+                }
+
+            }
+}
+
+void BubbleSortAsc()
+{
+    for (int i=0; i<jum; i++)
+            {
+                for (int j=1; j<jum; j++)
+                {
+                    if (nasabah[j].no_rek<nasabah[j-1].no_rek)
+                    {
+                        temp1=nasabah[j].no_rek;
+                        nasabah[j].no_rek=nasabah[j-1].no_rek;
+                        nasabah[j-1].no_rek=temp1;
+
+                        temp2=nasabah[j].nama;
+                        nasabah[j].nama=nasabah[j-1].nama;
+                        nasabah[j-1].nama=temp2;
+
+                        temp3=nasabah[j].no_hp;
+                        nasabah[j].no_hp=nasabah[j-1].no_hp;
+                        nasabah[j-1].no_hp=temp3;
+
+                        temp4=nasabah[j].alamat;
+                        nasabah[j].alamat=nasabah[j-1].alamat;
+                        nasabah[j-1].alamat=temp4;
+                    }
+                }
+
+            }
+}
+
+void SortingNo_Rek(){
+	system("cls");
+	int pilih;
+	cout << "\t\tSorting Berdasarkan No Rekening \n\n";
+	cout << "\n1. Ascending\n2. Descending\nPilih :";
+	cin >> pilih;
+	if (pilih == 1)
+	{
+		BubbleSortAsc();
+	}else
+	{
+		InsertionSortDesc();
+	}
+}
+
 void SortingNama(){
 	system("cls");
 	int pilih;
@@ -251,6 +330,46 @@ void print(data nasabah[], int n){
 	cout << "=========================================================================================================================================" << endl;
 }
 
+int kiri = 0;
+int kanan = jum-1;
+int tengah;
+void SearchNo_Rek()
+{
+    system("cls");
+    if (nasabah[0].no_rek == NULL )
+    {
+        cout << "Data belum tersedia" << endl;
+    }else
+    {
+        SelectionSortAsc();
+
+        cout << "==============================================================" << endl;
+        cout << "|     Nama     |     No HP     |    Alamat    |    No Rek    |" << endl;
+        cout << "==============================================================" << endl;
+        while (kiri <= kanan)
+        {
+            tengah = (kiri+kanan)/2;
+            if (kunci == nasabah[tengah].no_rek)
+            {
+                cout <<"|"<<setw(14)<<nasabah[tengah].nama;
+                cout <<"|"<<setw(15)<<nasabah[tengah].no_hp;
+                cout <<"|"<<setw(15)<<nasabah[tengah].alamat;
+                cout <<"|"<<setw(15)<<nasabah[tengah].no_rek<<"|";
+                cout << endl;
+
+                break;
+
+            }else if (kunci > nasabah[tengah].no_rek)
+            {
+                kiri = tengah+1;
+            }else
+            {
+                kanan = tengah-1;
+            }
+        }
+    }
+
+}
 int main(){
 	menu :
 	system("cls");
@@ -373,6 +492,7 @@ int main(){
 			break;
 
 			case 4 :
+			SortingNo_Rek();
 			break;
 
 			case 5 :
@@ -381,6 +501,8 @@ int main(){
 			break;
 
 			case 6 :
+			SearchNo_Rek();
+			goto choice;
 			break;
 
 			case 7 :
