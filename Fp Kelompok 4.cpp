@@ -233,6 +233,24 @@ void SearchNama(){
 	}
 }
 
+void print(data nasabah[], int n){
+	cout << " \t\tData Nasabah Bank " << endl;
+	cout << " ==================================================== " << endl;
+
+	cout << endl;
+	cout << "=========================================================================================================================================" << endl;
+	cout << "|                Nama                |                Alamat                |          No. HP          |          No. Rekening          | " << endl;
+	cout << "=========================================================================================================================================" << endl;
+	for(int j = 0; j < n; j++)
+	{
+		cout << "| " << setiosflags(ios::left) << setw(35) << nasabah[j].nama << "|"; 
+		cout << " " << setiosflags(ios::left) << setw(37) << nasabah[j].alamat << "|"; 
+		cout << " " << setiosflags(ios::left) << setw(25) << nasabah[j].no_hp << "|"; 
+		cout << " " << setiosflags(ios::left) << setw(31) << nasabah[j].no_rek << "|"<< endl;
+	}
+	cout << "=========================================================================================================================================" << endl;
+}
+
 int main(){
 	menu :
 	system("cls");
