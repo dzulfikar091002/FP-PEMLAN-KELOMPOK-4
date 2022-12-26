@@ -237,7 +237,7 @@ int main(){
 	menu :
 	system("cls");
 	cout << "                   +--------------------------------+                     " << endl;
-	cout << "-----------------<<|SISTEM INFORMASI BANK CINTA KAYA|>>-------------------" << endl;
+	cout << "-----------------<<|SISTEM INFORMASI BANK CINTA KAYA hai|>>-------------------" << endl;
 	cout << "                   +--------------------------------+                     " << endl;
 	cout << "+----------------------------------------+" << endl;
 	cout << "|PEMROGRAMAN LANJUT KELOMPOK 4 :         |" << endl;
