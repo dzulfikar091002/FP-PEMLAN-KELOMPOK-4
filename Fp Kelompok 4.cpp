@@ -14,7 +14,7 @@ struct rekening{
 };
 
 rekening nasabah[30];
-int jum = 0;
+int jum = 5;
 
 void inputdata()
 {
