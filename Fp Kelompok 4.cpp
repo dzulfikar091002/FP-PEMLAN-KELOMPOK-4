@@ -387,18 +387,18 @@ void SearchNo_Rek()
 int main(){
 	menu :
 	system("cls");
-	cout << "                   +--------------------------------+                     " << endl;
-	cout << "-----------------<<|SISTEM INFORMASI BANK CINTA KAYA hai|>>-------------------" << endl;
-	cout << "                   +--------------------------------+                     " << endl;
-	cout << "+----------------------------------------+" << endl;
-	cout << "|PEMROGRAMAN LANJUT KELOMPOK 4 :         |" << endl;
-	cout << "+----------------------------------------+" << endl;
-	cout << "|DZULFIKAR AL GHOZALI (21081010160)      |" << endl;
-	cout << "|TALITHA AURORA N.S. (21081010170)       |" << endl;
-	cout << "|RAFANI BADRATUS SALSABILA (21081010172) |" << endl;
-	cout << "|ZAIN MUZADID ZAMZAMI (21081010174)      |" << endl;
-	cout << "|AHMAD HAUZAN ABID R. (21081010185)      |" << endl;
-	cout << "+----------------------------------------+" << endl;
+	cout << "                         +------------------------------------+                     " << endl;
+	cout << " -------------------------<<|SISTEM INFORMASI BANK CINTA KAYA|>>-------------------------" << endl;
+	cout << "                         +------------------------------------+                     " << endl;
+	cout << "\t\t\t+--------------------------------------+" << endl;
+	cout << "\t\t\t|PEMROGRAMAN LANJUT KELOMPOK 4 :       |" << endl;
+	cout << "\t\t\t+--------------------------------------+" << endl;
+	cout << "\t\t\t|DZULFIKAR AL GHOZALI (21081010160)    |" << endl;
+	cout << "\t\t\t|TALITHA AURORA N.S. (21081010170)     |" << endl;
+	cout << "\t\t\t|RAFANI BARDATUS S. (21081010172)      |" << endl;
+	cout << "\t\t\t|ZAIN MUZADID ZAMZAMI (21081010174)    |" << endl;
+	cout << "\t\t\t|AHMAD HAUZAN ABID R. (21081010185)    |" << endl;
+	cout << "\t\t\t+--------------------------------------+" << endl;
 
 	string npm[5];
 	npm[0]= "21081010160";
