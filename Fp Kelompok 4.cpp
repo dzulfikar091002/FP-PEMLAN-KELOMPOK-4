@@ -10,7 +10,7 @@ using namespace std;
 
 struct rekening{
     string nama, no_hp, alamat;
-    int no_rek;
+    string no_rek;
 };
 
 rekening nasabah[30];
@@ -175,7 +175,7 @@ void SelectionSortDesc(){
 }
 
 string temp2,temp3,temp4;
-long long int temp1,kunci;
+string temp1,kunci;
 
 void InsertionSortDesc()
 {
