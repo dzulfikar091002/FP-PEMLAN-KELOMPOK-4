@@ -56,6 +56,31 @@ void inputdata()
 	}while (loop == 'Y' || loop == 'y');
 }
 
+void tampildata(){
+	system("cls");
+	int jumlahData;
+	rekening nasabah[5] =
+    { {"Rafani Bardatus Salsabilah","Jalan Gebang Kidul No 50", "0856254637", "653527328"},
+    {"Talitha Aurora Nadenggan Siregar","Jalan Medokan Ayu J-90", "0873625280", "217932803"},
+    {"Ahmad Hauzan Abid Romadhon","Jalan Rungkut Raya Blok AA-44", "0832426291", "2453783003"},
+    {"Dzulfikar Al Ghozali","Jalan Gunung Anyar Indah No 33", "08334561789", "998478939"},
+    {"Zain Muzadid Zamzani","Jalan Raya Pandugo Perum C-77", "08456387929", "898737748"} };
+
+    jumlahData = sizeof (nasabah)/sizeof(nasabah[0]);
+    
+    cout << endl;
+	cout << "=========================================================================================================================================" << endl;
+	cout << "|                Nama                |                Alamat                |          No. HP          |          No. Rekening          | " << endl;
+	cout << "=========================================================================================================================================" << endl;
+	for(int j = 0; j < jum; j++)
+	{
+		cout << "| " << setiosflags(ios::left) << setw(35) << nasabah[j].nama << "|"; 
+		cout << " " << setiosflags(ios::left) << setw(37) << nasabah[j].alamat << "|"; 
+		cout << " " << setiosflags(ios::left) << setw(25) << nasabah[j].no_hp << "|"; 
+		cout << " " << setiosflags(ios::left) << setw(31) << nasabah[j].no_rek << "|"<< endl;
+	}
+}
+
 void delay (void){
 	int delay = 1;
 	while (delay < 1000000){
