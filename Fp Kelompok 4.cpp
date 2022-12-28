@@ -1,4 +1,4 @@
-#include <Windows.h> //system
+ #include <Windows.h> //system
 #include <iostream>
 #include <iomanip>
 #include <stdio.h> //printf
@@ -9,70 +9,14 @@
 using namespace std;
 
 struct rekening{
-    string nama, no_hp, alamat;
-    string no_rek;
+    string nama, alamat, no_hp;
+    long long int no_rek;
+	int saldo;
 };
-
-rekening nasabah[30];
-int jum = 5;
-
-void inputdata()
-{
-	system ("cls");
-    char loop;
-	cout << " \t\tData Nasabah Bank " << endl;
-	cout << " ==================================================== " << endl;
-	do 
-	{
-		system ("cls");
-		cout << " Data Nasabah ke-" << jum + 1 << endl;
-		cout << " Nama \t\t\t: "; 
-		getline (cin >> ws, nasabah[jum].nama);
-		cout << " Alamat \t\t: "; 
-		getline (cin >> ws, nasabah[jum].alamat);
-		cout << " No. HP \t\t: "; 
-		getline (cin >> ws, nasabah[jum].no_hp);
-		cout << " No. Rekening \t\t: "; 
-		getline (cin >> ws, nasabah[jum].no_rek);
-		cout << " ---------------------------------------------------- " << endl;
-		cout << "\n Data Berhasil Terinput ! " << endl;
-		
-		cout << endl;
-		cout << " Apakah Anda Ingin Menambahkan Data Lagi (Y/N) ?  ";
-		cin >> loop;
-		cout << endl;
-		jum++;	
-	}while (loop == 'Y' || loop == 'y');
-}
-
-void tampildata(){
-	system("cls");
-	int jumlahData;
-	rekening nasabah[5] =
-    { {"Rafani Bardatus Salsabilah","Jalan Gebang Kidul No 50", "0856254637", "653527328"},
-    {"Talitha Aurora Nadenggan Siregar","Jalan Medokan Ayu J-90", "0873625280", "217932803"},
-    {"Ahmad Hauzan Abid Romadhon","Jalan Rungkut Raya Blok AA-44", "0832426291", "2453783003"},
-    {"Dzulfikar Al Ghozali","Jalan Gunung Anyar Indah No 33", "08334561789", "998478939"},
-    {"Zain Muzadid Zamzani","Jalan Raya Pandugo Perum C-77", "08456387929", "898737748"} };
-
-    jumlahData = sizeof (nasabah)/sizeof(nasabah[0]);
-    
-    cout << endl;
-	cout << "=========================================================================================================================================" << endl;
-	cout << "|                Nama                |                Alamat                |          No. HP          |          No. Rekening          | " << endl;
-	cout << "=========================================================================================================================================" << endl;
-	for(int j = 0; j < jum; j++)
-	{
-		cout << "| " << setiosflags(ios::left) << setw(35) << nasabah[j].nama << "|"; 
-		cout << " " << setiosflags(ios::left) << setw(37) << nasabah[j].alamat << "|"; 
-		cout << " " << setiosflags(ios::left) << setw(25) << nasabah[j].no_hp << "|"; 
-		cout << " " << setiosflags(ios::left) << setw(31) << nasabah[j].no_rek << "|"<< endl;
-	}
-}
 
 void delay (void){
 	int delay = 1;
-	while (delay < 1000000){
+	while (delay < 10000000){
 		delay++;
 	}
 }
@@ -83,6 +27,77 @@ void gotoxy(int x, int y){
 	coord.Y = y;
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),coord);
 }
+
+rekening nasabah[30] =
+{ {"Rafani Bardatus Salsabilah","Jalan Gebang Kidul No 50", "0856254637", 653527328, 5000000},
+{"Talitha Aurora Nadenggan Siregar","Jalan Medokan Ayu J-90", "0873625280", 217932803, 7000000},
+{"Ahmad Hauzan Abid Romadhon","Jalan Rungkut Raya Blok AA-44", "0832426291", 245378300, 15000000},
+{"Dzulfikar Al Ghozali","Jalan Gunung Anyar Indah No 33", "08334561789", 998478939, 12000000},
+{"Zain Muzadid Zamzani","Jalan Raya Pandugo Perum C-77", "08456387929", 898737748, 6000000} };
+int jum = 5;
+
+void inputdata()
+{
+	system ("cls");
+    char loop;
+	gotoxy(67,1);
+	cout << "+--------------------------+";
+	gotoxy(67,2);
+	cout << "|Masukkan Data Nasabah Baru|";
+	gotoxy(67,3);
+	cout << "+--------------------------+";
+
+
+	do {
+		system ("cls");
+		cout << " Data Nasabah ke-" << jum + 1 << endl;
+		cout << " Nama \t\t\t: ";
+		getline (cin >> ws, nasabah[jum].nama);
+		cout << " Alamat \t\t: ";
+		getline (cin >> ws, nasabah[jum].alamat);
+		cout << " No. HP \t\t: ";
+		getline (cin >> ws, nasabah[jum].no_hp);
+		cout << " No. Rekening \t\t: ";
+		cin >> nasabah[jum].no_rek;
+		cout << " Saldo \t\t\t: ";
+		cin >> nasabah[jum].saldo;
+		cout << " ---------------------------------------------------- " << endl;
+		cout << "\n Data Berhasil Terinput ! " << endl;
+
+		cout << endl;
+		cout << " Apakah Anda Ingin Menambahkan Data Lagi (Y/N) ?  ";
+		cin >> loop;
+		cout << endl;
+		jum++;
+	}while (loop == 'Y' || loop == 'y');
+}
+
+void tampildata(){
+	system("cls");
+
+	gotoxy(67,1);
+	cout << "+----------------------------+";
+	gotoxy(67,2);
+	cout << "|Data Nasabah Bank Cinta Kaya|";
+	gotoxy(67,3);
+	cout << "+----------------------------+";
+
+	cout << endl;
+	cout << "+------------------------------------+--------------------------------------+--------------------------+--------------------------------+------------------------+" << endl;
+	cout << "|                Nama                |                Alamat                |          No. HP          |          No. Rekening          |          Saldo         |" << endl;
+	cout << "+------------------------------------+--------------------------------------+--------------------------+--------------------------------+------------------------+" << endl;
+	for(int j = 0; j < jum; j++)
+	{
+		cout << "| " << setiosflags(ios::left) << setw(35) << nasabah[j].nama << "|";
+		cout << " " << setiosflags(ios::left) << setw(37) << nasabah[j].alamat << "|";
+		cout << " " << setiosflags(ios::left) << setw(25) << nasabah[j].no_hp << "|";
+		cout << " " << setiosflags(ios::left) << setw(31) << nasabah[j].no_rek << "|";
+		cout << " " << setiosflags(ios::left) << setw(23) << nasabah[j].saldo << "|"<< endl;
+	}
+	cout << "+------------------------------------+--------------------------------------+--------------------------+--------------------------------+------------------------+" << endl;
+}
+
+
 
 void loadingScreen (string nama){
 	system("cls");
@@ -141,11 +156,15 @@ int login(string data[], int akhir, string cari)
 void tukar(int i, int terkecil){
 	swap(nasabah[terkecil].nama, nasabah[i].nama);
 	swap(nasabah[terkecil].no_hp, nasabah[i].no_hp);
-	swap(nasabah[terkecil].no_rek, nasabah[i].no_rek);
+	swap(nasabah[terkecil].alamat, nasabah[i].alamat);
 
-	int temp = nasabah[i].no_rek;
+	int temp = nasabah[i].saldo;
+	nasabah[i].saldo = nasabah[terkecil].saldo;
+	nasabah[terkecil].saldo = temp;
+
+	long long int temp1 = nasabah[i].no_rek;
 	nasabah[i].no_rek = nasabah[terkecil].no_rek;
-	nasabah[terkecil].no_rek = temp;
+	nasabah[terkecil].no_rek = temp1;
 }
 
 void SelectionSortAsc(){
@@ -175,78 +194,94 @@ void SelectionSortDesc(){
 }
 
 string temp2,temp3,temp4;
-string temp1,kunci;
+long long int temp1,kunci;
 
 void InsertionSortDesc()
 {
     for (int i=1; i<jum; i++)
+    {
+        for (int j=i; j>0; j--)
+        {
+            if (nasabah[j].no_rek>nasabah[j-1].no_rek)
             {
-                for (int j=i; j>0; j--)
-                {
-                    if (nasabah[j].no_rek>nasabah[j-1].no_rek)
-                    {
-                        temp1=nasabah[j].no_rek;
-                        nasabah[j].no_rek=nasabah[j-1].no_rek;
-                        nasabah[j-1].no_rek=temp1;
+                temp1=nasabah[j].no_rek;
+                nasabah[j].no_rek=nasabah[j-1].no_rek;
+                nasabah[j-1].no_rek=temp1;
 
-                        temp2=nasabah[j].nama;
-                        nasabah[j].nama=nasabah[j-1].nama;
-                        nasabah[j-1].nama=temp2;
+                temp2=nasabah[j].nama;
+                nasabah[j].nama=nasabah[j-1].nama;
+                nasabah[j-1].nama=temp2;
 
-                        temp3=nasabah[j].no_hp;
-                        nasabah[j].no_hp=nasabah[j-1].no_hp;
-                        nasabah[j-1].no_hp=temp3;
+                temp3=nasabah[j].no_hp;
+                nasabah[j].no_hp=nasabah[j-1].no_hp;
+                nasabah[j-1].no_hp=temp3;
 
-                        temp4=nasabah[j].alamat;
-                        nasabah[j].alamat=nasabah[j-1].alamat;
-                        nasabah[j-1].alamat=temp4;
-                    }else
-                    {
-                        break;
-                    }
-                }
+                temp4=nasabah[j].alamat;
+                nasabah[j].alamat=nasabah[j-1].alamat;
+                nasabah[j-1].alamat=temp4;
 
+				int temp = nasabah[j].saldo;
+				nasabah[j].saldo = nasabah[j-1].saldo;
+				nasabah[j-1].saldo = temp;
+            }else
+            {
+                break;
             }
+        }
+    }
 }
 
-void BubbleSortAsc()
+void InsertionSortAsc()
 {
-    for (int i=0; i<jum; i++)
+    for (int i=1; i<jum; i++)
+    {
+        for (int j=i; j>0; j--)
+        {
+            if (nasabah[j].no_rek<nasabah[j-1].no_rek)
             {
-                for (int j=1; j<jum; j++)
-                {
-                    if (nasabah[j].no_rek<nasabah[j-1].no_rek)
-                    {
-                        temp1=nasabah[j].no_rek;
-                        nasabah[j].no_rek=nasabah[j-1].no_rek;
-                        nasabah[j-1].no_rek=temp1;
+                temp1=nasabah[j].no_rek;
+                nasabah[j].no_rek=nasabah[j-1].no_rek;
+                nasabah[j-1].no_rek=temp1;
 
-                        temp2=nasabah[j].nama;
-                        nasabah[j].nama=nasabah[j-1].nama;
-                        nasabah[j-1].nama=temp2;
+                temp2=nasabah[j].nama;
+                nasabah[j].nama=nasabah[j-1].nama;
+                nasabah[j-1].nama=temp2;
 
-                        temp3=nasabah[j].no_hp;
-                        nasabah[j].no_hp=nasabah[j-1].no_hp;
-                        nasabah[j-1].no_hp=temp3;
+                temp3=nasabah[j].no_hp;
+                nasabah[j].no_hp=nasabah[j-1].no_hp;
+                nasabah[j-1].no_hp=temp3;
 
-                        temp4=nasabah[j].alamat;
-                        nasabah[j].alamat=nasabah[j-1].alamat;
-                        nasabah[j-1].alamat=temp4;
-                    }
-                }
+                temp4=nasabah[j].alamat;
+                nasabah[j].alamat=nasabah[j-1].alamat;
+                nasabah[j-1].alamat=temp4;
 
+				int temp = nasabah[j].saldo;
+				nasabah[j].saldo = nasabah[j-1].saldo;
+				nasabah[j-1].saldo = temp;
+            }else
+            {
+                break;
             }
+        }
+
+    }
 }
+
 
 void SortingNo_Rek(){
-	system("cls");
 	int pilih;
-	cout << "\t\tSorting Berdasarkan No Rekening \n\n";
-	cout << "\n1. Ascending\n2. Descending\nPilih :";
+	gotoxy(42,9);
+	cout << "Sorting Berdasarkan No Rekening";
+	gotoxy(42,10);
+	cout << "1. Ascending";
+	gotoxy(42,11);
+	cout <<"2. Descending";
+	gotoxy(42,12);
+	cout << "Pilih :";
 	cin >> pilih;
 	if (pilih == 1)
 	{
-		BubbleSortAsc();
+		InsertionSortAsc();
 	}else
 	{
 		InsertionSortDesc();
@@ -254,10 +289,15 @@ void SortingNo_Rek(){
 }
 
 void SortingNama(){
-	system("cls");
 	int pilih;
-	cout << "\t\tSorting Berdasarkan Nama Dengan Metode Selection Sort\n\n";
-	cout << "\n1. Ascending\n2. Descending\nPilih :";
+	gotoxy(42,9);
+	cout << "Sorting Berdasarkan Nama Dengan Metode Selection Sort";
+	gotoxy(42,10);
+	cout << "1. Ascending";
+	gotoxy(42,11);
+	cout <<"2. Descending";
+	gotoxy(42,12);
+	cout << "Pilih :";
 	cin >> pilih;
 	if (pilih == 1)
 	{
@@ -294,96 +334,296 @@ int JumpSearch(string cari){
 }
 
 void SearchNama(){
-	system("cls");
 	SelectionSortAsc();
 	string cari;
 	fflush(stdin);
+	gotoxy(42,9);
 	cout << "Masukkan Nama yang Dicari : "; getline(cin, cari);
 
 	int hasil;
 	hasil = JumpSearch(cari);
 	if (jum==0)
 	{
-		cout << "\n\nData Kosong\n\n";
+		gotoxy(42,11);
+		cout << "+------------+";
+		gotoxy(42,12);
+		cout << "|Data Kosong |";
+		gotoxy(42,13);
+		cout << "+------------+";
 	}else
 	{
 		if (hasil == -1)
 		{
-			cout << "\n\nData Tidak Ditemukan\n\n";
+		gotoxy(42,11);
+		cout << "+---------------------+";
+		gotoxy(42,12);
+		cout << "|Data Tidak Ditemukan |";
+		gotoxy(42,13);
+		cout << "+---------------------+";
 		}else
 		{
-			system("cls");
-			cout << endl;
-			cout << "=========================================================================================================================================" << endl;
-			cout << "|                Nama                |                Alamat                |          No. HP          |          No. Rekening          | " << endl;
-			cout << "=========================================================================================================================================" << endl;
-			cout << "| " << setiosflags(ios::left) << setw(35) << nasabah[hasil].nama << "|"; 
-			cout << " " << setiosflags(ios::left) << setw(37) << nasabah[hasil].alamat << "|"; 
-			cout << " " << setiosflags(ios::left) << setw(25) << nasabah[hasil].no_hp << "|"; 
-			cout << " " << setiosflags(ios::left) << setw(31) << nasabah[hasil].no_rek << "|"<< endl;
-		}	
-		system ("pause");
-	}
-}
-
-void print(data nasabah[], int n){
-	cout << " \t\tData Nasabah Bank " << endl;
-	cout << " ==================================================== " << endl;
+	system("cls");
+	gotoxy(67,1);
+	cout << "+----------------------------+";
+	gotoxy(67,2);
+	cout << "|Data Nasabah Bank Cinta Kaya|";
+	gotoxy(67,3);
+	cout << "+----------------------------+";
 
 	cout << endl;
-	cout << "=========================================================================================================================================" << endl;
-	cout << "|                Nama                |                Alamat                |          No. HP          |          No. Rekening          | " << endl;
-	cout << "=========================================================================================================================================" << endl;
-	for(int j = 0; j < n; j++)
-	{
-		cout << "| " << setiosflags(ios::left) << setw(35) << nasabah[j].nama << "|"; 
-		cout << " " << setiosflags(ios::left) << setw(37) << nasabah[j].alamat << "|"; 
-		cout << " " << setiosflags(ios::left) << setw(25) << nasabah[j].no_hp << "|"; 
-		cout << " " << setiosflags(ios::left) << setw(31) << nasabah[j].no_rek << "|"<< endl;
+	cout << "+------------------------------------+--------------------------------------+--------------------------+--------------------------------+------------------------+" << endl;
+	cout << "|                Nama                |                Alamat                |          No. HP          |          No. Rekening          |          Saldo         |" << endl;
+	cout << "+------------------------------------+--------------------------------------+--------------------------+--------------------------------+------------------------+" << endl;
+			cout << "| " << setiosflags(ios::left) << setw(35) << nasabah[hasil].nama << "|";
+			cout << " " << setiosflags(ios::left) << setw(37) << nasabah[hasil].alamat << "|";
+			cout << " " << setiosflags(ios::left) << setw(25) << nasabah[hasil].no_hp << "|";
+			cout << " " << setiosflags(ios::left) << setw(31) << nasabah[hasil].no_rek << "|";
+			cout << " " << setiosflags(ios::left) << setw(23) << nasabah[hasil].saldo << "|"<< endl;
+			cout << "+------------------------------------+--------------------------------------+--------------------------+--------------------------------+------------------------+" << endl;
+		}
+		getch();
 	}
-	cout << "=========================================================================================================================================" << endl;
 }
 
-int kiri = 0;
-int kanan = jum-1;
-int tengah;
-void SearchNo_Rek()
-{
-    system("cls");
-    if (nasabah[0].no_rek == NULL )
-    {
-        cout << "Data belum tersedia" << endl;
-    }else
-    {
-        SelectionSortAsc();
+void SukuBunga(){
+	SelectionSortAsc();
+	string cari;
+	fflush(stdin);
+	int pilih, hasil, untung;
+	char pil;
+	gotoxy(42,9);
+	cout << "Bunga Deposito Berjangka";
+	gotoxy(42,10);
+	cout << "Masukkan Nama Nasabah : "; getline(cin, cari);
 
-        cout << "==============================================================" << endl;
-        cout << "|     Nama     |     No HP     |    Alamat    |    No Rek    |" << endl;
-        cout << "==============================================================" << endl;
-        while (kiri <= kanan)
+	hasil = JumpSearch(cari);
+	if (hasil == -1)
+	{
+		gotoxy(42,12);
+		cout << "+---------------------+";
+		gotoxy(42,13);
+		cout << "|Data Tidak Ditemukan |";
+		gotoxy(42,14);
+		cout << "+---------------------+";
+		getch();
+	}else
+	{
+		gotoxy(42,12);
+		cout << "1. 6 Bulan";
+		gotoxy(42,13);
+		cout << "2. 1 Tahun";
+		gotoxy(42,14);
+		cout << "3. 1 Tahun dan 6 Bulan";
+		gotoxy(42,15);
+		cout << "4. 2 Tahun";
+		gotoxy(42,16);
+		cout << "Pilih Jangka Waktu Deposito : "; cin >> pilih;
+
+		if (pilih == 1)
+		{
+			untung = (nasabah[hasil].saldo * 0.05 * 182) / 365;
+		} else if (pilih == 2)
+		{
+			untung = (nasabah[hasil].saldo * 0.05 * 365) / 365;
+		} else if (pilih == 3)
+		{
+			untung = (nasabah[hasil].saldo * 0.05 * 547) / 365;
+		} else if (pilih == 4)
+		{
+			untung = (nasabah[hasil].saldo * 0.05 * 730) / 365;
+		}
+		gotoxy(42,18);
+		cout << "Dengan Bunga 5% Saldo Awal akan Menjadi Rp " << nasabah[hasil].saldo + untung;
+		gotoxy(42,20);
+		cout << "Apakah Deposito Dilakukan (Y/N) : "; cin >> pil;
+		fflush(stdin);
+		if (pil == 'y' || pil == 'Y')
+		{
+			nasabah[hasil].saldo = nasabah[hasil].saldo + untung;
+		}
+	}
+}
+
+void print(){
+	system("cls");
+	gotoxy(67,1);
+	cout << "+----------------------------+";
+	gotoxy(67,2);
+	cout << "|Data Nasabah Bank Cinta Kaya|";
+	gotoxy(67,3);
+	cout << "+----------------------------+";
+
+	cout << endl;
+	cout << "+------------------------------------+--------------------------------------+--------------------------+--------------------------------+------------------------+" << endl;
+	cout << "|                Nama                |                Alamat                |          No. HP          |          No. Rekening          |          Saldo         |" << endl;
+	cout << "+------------------------------------+--------------------------------------+--------------------------+--------------------------------+------------------------+" << endl;
+	for(int j = 0; j < jum; j++)
+	{
+		cout << "| " << setiosflags(ios::left) << setw(35) << nasabah[j].nama << "|";
+		cout << " " << setiosflags(ios::left) << setw(37) << nasabah[j].alamat << "|";
+		cout << " " << setiosflags(ios::left) << setw(25) << nasabah[j].no_hp << "|";
+		cout << " " << setiosflags(ios::left) << setw(31) << nasabah[j].no_rek << "|";
+		cout << " " << setiosflags(ios::left) << setw(23) << nasabah[j].saldo << "|"<< endl;
+	}
+	cout << "+------------------------------------+--------------------------------------+--------------------------+--------------------------------+------------------------+" << endl;
+	getch();
+}
+
+int BinarySearch(){
+	int kiri = 0;
+	int kanan = jum-1;
+	int tengah;
+
+	while (kiri <= kanan)
+    {
+        tengah = (kiri+kanan)/2;
+        if (kunci == nasabah[tengah].no_rek)
         {
-            tengah = (kiri+kanan)/2;
-            if (kunci == nasabah[tengah].no_rek)
-            {
-                cout <<"|"<<setw(14)<<nasabah[tengah].nama;
-                cout <<"|"<<setw(15)<<nasabah[tengah].no_hp;
-                cout <<"|"<<setw(15)<<nasabah[tengah].alamat;
-                cout <<"|"<<setw(15)<<nasabah[tengah].no_rek<<"|";
-                cout << endl;
-
-                break;
-
-            }else if (kunci > nasabah[tengah].no_rek)
-            {
-                kiri = tengah+1;
-            }else
-            {
-                kanan = tengah-1;
-            }
+            return tengah;
+        }else if (kunci > nasabah[tengah].no_rek)
+        {
+            kiri = tengah+1;
+        }else
+        {
+            kanan = tengah-1;
         }
     }
-
+	return -1;
 }
+
+void SearchNo_Rek()
+{
+
+    SelectionSortAsc();
+    if (jum == 0)
+    {
+    	gotoxy(42,16);
+		cout << "+--------------------+";
+		gotoxy(42,17);
+		cout << "|Data Belum Tersedia |";
+		gotoxy(42,18);
+		cout << "+--------------------+";
+    }else
+    {
+    	gotoxy(42,9);
+		cout << "No Rekening yang Anda cari : ";cin>>kunci;
+		int hasil = BinarySearch();
+		if (hasil == -1)
+		{
+    	gotoxy(42,16);
+		cout << "+---------------------+";
+		gotoxy(42,17);
+		cout << "|Data Tidak Ditemukan |";//baru
+		gotoxy(42,18);
+		cout << "+---------------------+";
+		}else{
+	system("cls");
+	gotoxy(67,1);
+	cout << "+----------------------------+";
+	gotoxy(67,2);
+	cout << "|Data Nasabah Bank Cinta Kaya|";
+	gotoxy(67,3);
+	cout << "+----------------------------+";
+
+	cout << endl;
+	cout << "+------------------------------------+--------------------------------------+--------------------------+--------------------------------+------------------------+" << endl;
+	cout << "|                Nama                |                Alamat                |          No. HP          |          No. Rekening          |          Saldo         |" << endl;
+	cout << "+------------------------------------+--------------------------------------+--------------------------+--------------------------------+------------------------+" << endl;
+			cout << "| " << setiosflags(ios::left) << setw(35) << nasabah[hasil].nama << "|";
+			cout << " " << setiosflags(ios::left) << setw(37) << nasabah[hasil].alamat << "|";
+			cout << " " << setiosflags(ios::left) << setw(25) << nasabah[hasil].no_hp << "|";
+			cout << " " << setiosflags(ios::left) << setw(31) << nasabah[hasil].no_rek << "|";
+			cout << " " << setiosflags(ios::left) << setw(23) << nasabah[hasil].saldo << "|"<< endl;
+	cout << "+------------------------------------+--------------------------------------+--------------------------+--------------------------------+------------------------+" << endl;
+		}
+    }
+	getch();
+}
+
+void HapusNama(){
+    SelectionSortAsc();
+
+	string cari;
+	fflush(stdin);
+	gotoxy(42,15);
+	cout << "Masukkan Nama yang Dicari : "; getline(cin, cari);
+	int posisi = JumpSearch(cari);
+	if (posisi == -1)
+	{
+		gotoxy(42,16);
+		cout << "+--------------------+";
+		gotoxy(42,17);
+		cout << "|Data Tidak Ditemukan|";
+		gotoxy(42,18);
+		cout << "+--------------------+";
+	}else{
+		for(int i=posisi; i<jum; i++){
+			nasabah[i] = nasabah[i+1];
+		}
+		jum--;
+		gotoxy(42,16);
+		cout << "+---------------------+";
+		gotoxy(42,17);
+		cout << "|Data Berhasil Dihapus|";
+		gotoxy(42,18);
+		cout << "+---------------------+";
+	}
+	getch();
+}
+
+void HapusRek(){
+    SelectionSortAsc();
+	gotoxy(42,15);
+	cout << "No Rekening yang Akan Dihapus : ";cin>>kunci;
+	int posisi = BinarySearch();
+	if (posisi == -1)
+	{
+		gotoxy(42,16);
+		cout << "+--------------------+";
+		gotoxy(42,17);
+		cout << "|Data Tidak Ditemukan|";
+		gotoxy(42,18);
+		cout << "+--------------------+";
+	}else{
+		for(int i=posisi; i<jum; i++){
+			nasabah[i] = nasabah[i+1];
+		}
+		jum--;
+		gotoxy(42,16);
+		cout << "+---------------------+";
+		gotoxy(42,17);
+		cout << "|Data Berhasil Dihapus|";
+		gotoxy(42,18);
+		cout << "+---------------------+";
+	}
+	getch();
+}
+
+void hapusdata(){
+	if (jum == 0)
+	{
+		cout << "Data belum tersedia" << endl;
+	}else{
+		int pilih;
+		gotoxy(42,10);
+		cout << "Hapus Data Berdasarkan Nama atau No Rekening";
+		gotoxy(42,11);
+		cout << "1. Hapus Berdasarkan Nama";
+		gotoxy(42,12);
+		cout << "2. Hapus Berdasarkan No Rekening";
+		gotoxy(42,13);
+		cout << "Pilih :";
+		cin >> pilih;
+		if (pilih == 1)
+		{
+			HapusNama();
+		}else
+		{
+			HapusRek();
+		}
+	}
+}
+
 int main(){
 	menu :
 	system("cls");
@@ -425,7 +665,7 @@ int main(){
 		cout << "|Login Gagal! NPM Anda Salah/ Tidak Tersedia |" << endl;
 		cout << "+--------------------------------------------+" << endl;
 		cout << "SILAKAN COBA LAGI" << endl;
-		system("Pause");
+		getch();
 		goto menu;
 	}else{
 		string akun = nama[p];
@@ -483,60 +723,57 @@ int main(){
 		gotoxy(3,12);
 		cout << "6. Searching Berdasarkan No Rekening";
 		gotoxy(3,13);
-		cout << "7. Selesai / Logout";
+		cout << "7. Hitung Bunga";
+		gotoxy(3,14);
+		cout << "8. Hapus Data Nasabah";
+		gotoxy(3,15);
+		cout << "9. Selesai / Logout";
 
-		int pilihan;
+		string pilihan;
 		gotoxy(42,7);
 		cout << "Masukkan Pilihan Anda : ";
 		cin >> pilihan;
 
-		if(pilihan > 0 && pilihan < 8){
-		switch(pilihan){
-			case 1 :
-			break;
-
-			case 2 :
+if(pilihan == "1"){
+			tampildata();
+			getch();
+			goto choice;
+		}else if(pilihan == "2"){
 			inputdata();
         	goto choice;
-			break;
-
-			case 3 :
+		}else if(pilihan == "3"){
 			SortingNama();
+			print();
 			goto choice;
-			break;
-
-			case 4 :
+		}else if(pilihan == "4"){
 			SortingNo_Rek();
-			break;
-
-			case 5 :
+			print();
+			goto choice;
+		}else if(pilihan == "5"){
 			SearchNama();
 			goto choice;
-			break;
-
-			case 6 :
+		}else if(pilihan == "6"){
 			SearchNo_Rek();
 			goto choice;
-			break;
-
-			case 7 :
+		}else if(pilihan == "7"){
+			SukuBunga();
+			goto choice;
+		}else if(pilihan == "8"){
+			hapusdata();
+			goto choice;
+		}else if(pilihan == "9"){
 			system("cls");
 			gotoxy(40,10);
 			printf("---THANKS AND HAVE A NICE DAY---");
 			gotoxy(40,11);
             printf("-----------KELOMPOK 4-----------\n");
-            getch();
-		}
-		}else {
+		}else{
 			gotoxy(42,9);
         	printf ("Pilihan Anda Tidak Tersedia\n");
         	gotoxy(42,10);
         	printf ("Silakan Pilih Menu yang Tersedia\n");
         	getch();
         	goto choice;
-    	}
+		}
 
-
-
-	getch();
 }
